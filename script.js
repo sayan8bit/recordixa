@@ -2,30 +2,43 @@ let mediaRecorder;
 let recordedChunks = [];
 
 function isMobile() {
-    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 }
+
 document
   .getElementById("startRecording")
   .addEventListener("click", async () => {
 
-     if (isMobile()) {
-        alert('Screen recording is not supported on mobile browsers. Please use a desktop browser.');
-        return;
-    }
-    
+    if (isMobile()) {
+      alert('Screen recording is not supported on mobile browsers. Please use a desktop browser.');
+      return;
+  }
+
     const audioSource = document.getElementById("audioSource").value;
 
     try {
       // Get screen media
       const screenStream = await navigator.mediaDevices.getDisplayMedia({
-        video: true,
+        video: {
+          width: { ideal: 1920 },
+          height: { ideal: 1080 },
+          frameRate: { ideal: 30, max: 60 },
+        },
         audio: audioSource === "screen" || audioSource === "both",
       });
 
       // Get microphone media if needed
       let micStream;
       if (audioSource === "mic" || audioSource === "both") {
-        micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        micStream = await navigator.mediaDevices.getUserMedia({
+          audio: {
+            sampleSize: 16,
+            channelCount: 2,
+            echoCancellation: true,
+            noiseSuppression: true,
+            sampleRate: 48000,
+          },
+        });
       }
 
       let combinedStream = screenStream;
@@ -38,14 +51,20 @@ document
         ]);
       }
 
-      mediaRecorder = new MediaRecorder(combinedStream);
+      // Define options for MediaRecorder
+      const options = {
+        mimeType: "video/mp4; codecs=vp9",
+        videoBitsPerSecond: 2500000,
+      };
+
+      mediaRecorder = new MediaRecorder(combinedStream, options);
       mediaRecorder.ondataavailable = (event) => {
         if (event.data.size > 0) {
           recordedChunks.push(event.data);
         }
       };
       mediaRecorder.onstop = () => {
-        const blob = new Blob(recordedChunks, { type: "video/webm" });
+        const blob = new Blob(recordedChunks, { type: "video/mp4" });
         recordedChunks = [];
         const url = URL.createObjectURL(blob);
         addRecordingToList(url);
