@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vidibu</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Screen Recorder</h1>
+      <div class="option-list">
+        <select id="audioSource">
+          <option value="screen">Built-in Audio</option>
+          <option value="mic">Microphone</option>
+          <option value="both">Both</option>
+        </select>
+
+        <button id="startRecording">Start Recording</button>
+        <button id="stopRecording" disabled>Stop Recording</button>
+      </div>
+      <h2>Recordings:</h2>
+      <ul id="recordingsList"></ul>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

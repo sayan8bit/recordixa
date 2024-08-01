@@ -1,0 +1,39 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #ccc;
+  margin: 20px;
+}
+.container {
+  height: auto;
+  width: 320px;
+  margin-inline: auto;
+  background-color: white;
+  padding: 20px 0;
+}
+button,
+select {
+  margin: 10px 15px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+ul {
+  list-style-type: none;
+  /* background-color: red; */
+  display: inline;
+}
+
+li {
+  margin: 5px 0;
+}
+/* select {
+  margin: 10px;
+  padding: 10px;
+  font-size: 16px;
+} */
+.option-list {
+  display: inline;
+  flex-direction: column;
+}
