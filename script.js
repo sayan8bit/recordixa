@@ -53,7 +53,7 @@ document
 
       // Define options for MediaRecorder
       const options = {
-        mimeType: "video/mp4; codecs=vp9",
+        mimeType: "video/webm; codecs=vp9",
         videoBitsPerSecond: 2500000,
       };
 
