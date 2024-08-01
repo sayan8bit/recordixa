@@ -95,7 +95,7 @@ function addRecordingToList(url) {
 
   const downloadLink = document.createElement("a");
   downloadLink.href = url;
-  downloadLink.download = "recording.mp4";
+  downloadLink.download = "recording.webm";
   downloadLink.textContent = "Download";
 
   listItem.appendChild(videoElement);
