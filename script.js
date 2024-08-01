@@ -64,7 +64,7 @@ document
         }
       };
       mediaRecorder.onstop = () => {
-        const blob = new Blob(recordedChunks, { type: "video/mp4" });
+        const blob = new Blob(recordedChunks, { type: "video/webm" });
         recordedChunks = [];
         const url = URL.createObjectURL(blob);
         addRecordingToList(url);
