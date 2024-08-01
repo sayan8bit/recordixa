@@ -20,8 +20,8 @@ document
       // Get screen media
       const screenStream = await navigator.mediaDevices.getDisplayMedia({
         video: {
-          width: { ideal: 1920 },
-          height: { ideal: 1080 },
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
           frameRate: { ideal: 30, max: 60 },
         },
         audio: audioSource === "screen" || audioSource === "both",
