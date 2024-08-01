@@ -22,7 +22,7 @@ document
         video: {
           width: { ideal: 1280 },
           height: { ideal: 720 },
-          frameRate: { ideal: 60, max:60 },
+          frameRate: { ideal: 60 },
         },
         audio: audioSource === "screen" || audioSource === "both",
       });
