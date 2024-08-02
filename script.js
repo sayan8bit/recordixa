@@ -16,14 +16,19 @@ document
   
 
     const audioSource = document.getElementById("audioSource").value;
+    const resolution = document.getElementById("resolution").value.split("x");
+    const frameRate = parseInt(document.getElementById("frameRate").value, 10);
+    const bitRate =
+      parseInt(document.getElementById("bitRate").value, 10) * 1000;
+
 
     try {
       // Get screen media
       const screenStream = await navigator.mediaDevices.getDisplayMedia({
-        video: {
-          width: { ideal: 1280 },
-          height: { ideal: 720 },
-          frameRate: { ideal: 30, max:60},
+         video: {
+          width: { ideal: parseInt(resolution[0], 10) },
+          height: { ideal: parseInt(resolution[1], 10) },
+          frameRate: { ideal: frameRate, max: frameRate },
         },
         audio: audioSource === "screen" || audioSource === "both",
       });
@@ -55,6 +60,7 @@ document
       // Define options for MediaRecorder
       const options = {
         mimeType: "video/webm; codecs=vp9",
+        audioBitsPerSecond: 128000, // Increased bitrate for better audio quality
         videoBitsPerSecond: 2500000,
       };
 
