@@ -4,15 +4,16 @@ let recordedChunks = [];
 function isMobile() {
   return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 }
+  if (isMobile()) {
+      alert('Screen recording is not supported on mobile browsers. Please use a desktop browser.');
+      return;
+  }
 
 document
   .getElementById("startRecording")
   .addEventListener("click", async () => {
 
-    if (isMobile()) {
-      alert('Screen recording is not supported on mobile browsers. Please use a desktop browser.');
-      return;
-  }
+  
 
     const audioSource = document.getElementById("audioSource").value;
 
