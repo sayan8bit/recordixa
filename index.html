@@ -10,14 +10,37 @@
     <div class="container">
       <h1>Screen Recorder</h1>
       <div class="option-list">
+        
+        <div class="setting">
+        <select id="resolution">
+            <option value="1280x720">HD</option>
+            <option value="1920x1080">Full HD</option>
+            <option value="2560x1440">QHD</option>
+          </select>
+
+          <select id="frameRate">
+            <option value="30">30 FPS</option>
+            <option value="60">60 FPS</option>
+          </select>
+
+          <select id="bitRate">
+            <option value="2500">2.5Mbps</option>
+            <option value="5000">5Mbps</option>
+            <option value="8000">8Mbps</option>
+          </select>
+
+        
         <select id="audioSource">
           <option value="screen">Built-in Audio</option>
           <option value="mic">Microphone</option>
           <option value="both">Both</option>
         </select>
+          </div>
 
-        <button id="startRecording">Start Recording</button>
-        <button id="stopRecording" disabled>Stop Recording</button>
+        <div class="recording">
+          <button id="startRecording">Start Recording</button>
+          <button id="stopRecording" disabled>Stop Recording</button>
+        </div>
       </div>
       <h2>Recordings:</h2>
       <ul id="recordingsList"></ul>
